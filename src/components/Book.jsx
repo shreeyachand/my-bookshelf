@@ -1,12 +1,11 @@
 import { FONTS } from '../data/fonts.js'
 
-export default function Book({ book, onOpen, hidden, registerEl }) {
+export default function Book({ book, onOpen, hidden, registerEl, chunk }) {
   const {
     title,
     accent,
     ink,
     font,
-    tag,
     height,
     thickness,
     tilt = 0,
@@ -31,7 +30,7 @@ export default function Book({ book, onOpen, hidden, registerEl }) {
       aria-label={`Open the ${title} book`}
     >
       <span className={`book__title book__title--${font}`}>{title}</span>
-      {tag && <span className="book__tag">{tag}</span>}
+      {chunk && <span className="book__tag">{chunk}</span>}
     </button>
   )
 }

@@ -1,5 +1,6 @@
 import { forwardRef, useEffect, useImperativeHandle, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { FONTS } from '../data/fonts.js'
+import { site } from '../data/site.js'
 import '../styles/book3d.css'
 
 const PAGE_W = 150
@@ -83,7 +84,7 @@ function packBlocks(flat, heights, maxH) {
   return pages
 }
 
-export default forwardRef(function Book3D({ book, rect, skipAnim, onClose, onReveal }, ref) {
+export default forwardRef(function Book3D({ book, rect, skipAnim, onClose, onReveal, chunk }, ref) {
   const [pageIdx, setPageIdx] = useState(0)
   const [coverOpen, setCoverOpen] = useState(false)
   const [turn, setTurn] = useState(null)
@@ -102,7 +103,7 @@ export default forwardRef(function Book3D({ book, rect, skipAnim, onClose, onRev
   const onRevealRef = useRef(onReveal)
   onRevealRef.current = onReveal
 
-  const { accent, ink, font, tag, spine = 'solid' } = book
+  const { accent, ink, font, spine = 'solid' } = book
   const pageW = window.innerWidth < 640 ? PAGE_W_MOBILE : PAGE_W
   const coverW = pageW * 2
   const scale = Math.min(
@@ -378,7 +379,7 @@ export default forwardRef(function Book3D({ book, rect, skipAnim, onClose, onRev
             <span className={`book3d__spineTitle book__title--${font}`}>
               {book.title}
             </span>
-            {tag && <span className="book3d__spineTag">{tag}</span>}
+            {chunk && <span className="book3d__spineTag">{chunk}</span>}
           </div>
           <div
             className="book3d__face book3d__front"
@@ -392,7 +393,7 @@ export default forwardRef(function Book3D({ book, rect, skipAnim, onClose, onRev
           >
             <div className="book3d__coverFrame" aria-hidden="true" />
             <span className="book3d__coverTitle">{book.title}</span>
-            {tag && <span className="book3d__coverTag">{tag}</span>}
+            {site.publisher && <span className="book3d__coverTag">{site.publisher}</span>}
           </div>
         </div>
         <div

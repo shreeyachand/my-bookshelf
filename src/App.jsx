@@ -2,6 +2,8 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import Bookshelf from './components/Bookshelf.jsx'
 import Book3D from './components/Book3D.jsx'
 import { books } from './data/loadBooks.js'
+import { FONTS } from './data/fonts.js'
+import { publisherChunksById, site } from './data/site.js'
 
 const NAME = 'Your Name'
 const TAGLINE = 'Choose a book to begin reading.'
@@ -18,6 +20,17 @@ export default function App() {
   const book3dRef = useRef(null)
   const pushedRef = useRef(false)
   const didInitRef = useRef(false)
+  const [chunks, setChunks] = useState({})
+
+  useEffect(() => {
+    document.title = site.title
+  }, [])
+
+  useEffect(() => {
+    const build = () => setChunks(publisherChunksById(books, site.publisher, FONTS.sans))
+    build()
+    if (document.fonts?.ready) document.fonts.ready.then(build).catch(() => {})
+  }, [])
 
   const openBook = useCallback((book, element, mode) => {
     if (openingRef.current?.book.id === book.id) return
@@ -86,6 +99,7 @@ export default function App() {
         onOpen={handleOpen}
         hiddenId={opening && revealedId !== opening.book.id ? opening.book.id : null}
         registerEl={registerEl}
+        chunks={chunks}
       />
       {opening && (
         <Book3D
@@ -95,6 +109,7 @@ export default function App() {
           skipAnim={opening.skipAnim}
           onReveal={(id) => setRevealedId(id)}
           onClose={handleClose}
+          chunk={chunks[opening.book.id]}
         />
       )}
     </div>
