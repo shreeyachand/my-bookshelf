@@ -4,39 +4,26 @@ title: Reading
 accent: "#5c3d63"
 ink: "#f0e3d0"
 font: lora
-height: 250
+height: 264
 thickness: 24
 tilt: -0.8
 spine: stripe
 chapters:
-  - title: On the Nightstand
-    content:
-      - type: p
-        text: "The books I am reading right now, one page at a time, usually late at night."
-      - type: list
-        items:
-          - "Title one — author, and a sentence on why it has my attention"
-          - "Title two — author, and a sentence on why it has my attention"
-          - "Title three — author, and a sentence on why it has my attention"
-  - title: Well-Loved
+  - title: books i loved
     content:
       - type: h
-        text: The ones that stay
-      - type: p
-        text: "Books I return to, annotate, and recommend more often than is polite."
+        text: 2026
       - type: list
         items:
-          - "A favorite — why it matters to you"
-          - "Another favorite — why it matters to you"
-          - "One more — why it matters to you"
-  - title: The Stack
-    content:
+          - The Correspondent - Virginia Evans
+          - Breakfast of Champions - Kurt Vonnegut
+          - Astronaut! - Oana Aristide
       - type: h
-        text: To be read
-      - type: p
-        text: "A tall, unsteady pile of intentions. It only grows."
+        text: 2025
       - type: list
         items:
-          - "Something you have been meaning to start"
-          - "Something recommended by a friend"
-          - "Something completely out of your usual lane"
+          - Tomorrow, and Tomorrow, and Tomorrow - Gabrielle Zevin
+          - Immaculate Conception - Ling Ling Huang
+      - type: list
+        items:
+          - Where the Axe Is Buried - Ray Nayler

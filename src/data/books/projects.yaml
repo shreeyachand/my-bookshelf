@@ -9,7 +9,7 @@ thickness: 42
 tilt: 0.9
 spine: label
 chapters:
-  - title: On the Workbench
+  - title: Projects
     content:
       - type: h
         text: Featured work

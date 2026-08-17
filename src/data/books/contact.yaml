@@ -9,32 +9,11 @@ thickness: 30
 tilt: 1.1
 spine: rib
 chapters:
-  - title: Correspondence
+  - title: where 2 find me
     content:
-      - type: p
-        text: "The oldest and best way to reach me: a letter (of the digital kind). I read everything and reply when I can."
       - type: link
-        text: Write to me
-        href: "mailto:you@example.com"
-  - title: Elsewhere
-    content:
-      - type: h
-        text: Find me online
-      - type: list
-        items:
-          - "GitHub — code and experiments"
-          - "LinkedIn — professional history"
-          - "Twitter / Mastodon — small thoughts"
-      - type: p
-        text: "Add real links to each of these in data/books.js."
-  - title: Imprint
-    content:
-      - type: h
-        text: About this shelf
-      - type: p
-        text: "This website was built as an interactive bookshelf — every section a book, every sub-section a chapter. Built with React and Vite, styled with warm paper tones and a library aesthetic."
-      - type: list
-        items:
-          - "Set in EB Garamond and Inter"
-          - "Hand-styled spines, no image assets"
-          - "A small, honest corner of the web"
+        text: GitHub
+        href: "https://github.com/shreeyachand"
+      - type: link
+        text: LinkedIn
+        href: "https://linkedin.com/in/shreeyachand"

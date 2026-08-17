@@ -15,7 +15,7 @@ const PAD_X = 20
 const PAD_TOP = 26
 const PAD_BOTTOM = 22
 
-function Block({ block }) {
+function Block({ block, onImgLoad }) {
   switch (block.type) {
     case 'h':
       return <h3 className="book3d__block book3d__block--h">{block.text}</h3>
@@ -39,6 +39,15 @@ function Block({ block }) {
         >
           {block.text} →
         </a>
+      )
+    case 'img':
+      return (
+        <figure className="book3d__block book3d__block--img">
+          <img src={block.src} alt={block.alt || ''} onLoad={onImgLoad} />
+          {block.caption && (
+            <figcaption className="book3d__block--imgCap">{block.caption}</figcaption>
+          )}
+        </figure>
       )
     default:
       return null
@@ -72,7 +81,7 @@ function packBlocks(flat, heights, maxH) {
   for (let i = 0; i < flat.length; i++) {
     const h = heights[i] || 0
     const chapter = flat[i].chapterIndex
-    if (cur.length && (used + h > maxH || chapter !== lastChapter)) {
+    if (cur.length && (used + h > maxH || chapter !== lastChapter || flat[i].block.new_page)) {
       pages.push(cur)
       cur = []
       used = 0
@@ -90,6 +99,7 @@ export default forwardRef(function Book3D({ book, rect, skipAnim, onClose, onRev
   const [coverOpen, setCoverOpen] = useState(false)
   const [turn, setTurn] = useState(null)
   const [pageData, setPageData] = useState([])
+  const [imgTick, setImgTick] = useState(0)
   const rootRef = useRef(null)
   const rigRef = useRef(null)
   const coverRef = useRef(null)
@@ -118,7 +128,7 @@ export default forwardRef(function Book3D({ book, rect, skipAnim, onClose, onRev
   const flat = useMemo(
     () =>
       book.chapters.flatMap((c, ci) =>
-        c.content.map((block) => ({
+        (c.content || []).map((block) => ({
           block,
           chapterIndex: ci,
           chapterTitle: c.title,
@@ -133,8 +143,12 @@ export default forwardRef(function Book3D({ book, rect, skipAnim, onClose, onRev
     const run = () => {
       if (cancelled) return
       const heights = flat.map((_, i) => measureRefs.current.get(i)?.offsetHeight || 0)
+      let packed = packBlocks(flat, heights, maxH)
+      if (!packed.length && book.pages) {
+        packed = Array.from({ length: book.pages }, () => [])
+      }
       setPageData(
-        packBlocks(flat, heights, maxH).map((g, gi) => ({
+        packed.map((g, gi) => ({
           number: gi + 1,
           blocks: g.map((bi) => flat[bi]),
         })),
@@ -154,7 +168,7 @@ export default forwardRef(function Book3D({ book, rect, skipAnim, onClose, onRev
       cancelAnimationFrame(rafId)
       window.removeEventListener('resize', onResize)
     }
-  }, [book, contentWidth, maxH, flat])
+  }, [book, contentWidth, maxH, flat, imgTick])
 
   useEffect(() => {
     const dx = window.innerWidth / 2 - (rect.left + rect.width / 2)
@@ -417,7 +431,7 @@ export default forwardRef(function Book3D({ book, rect, skipAnim, onClose, onRev
                 else measureRefs.current.delete(index)
               }}
             >
-              <Block block={item.block} />
+              <Block block={item.block} onImgLoad={() => setImgTick((t) => t + 1)} />
             </div>
           ))}
         </div>

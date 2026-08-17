@@ -22,6 +22,10 @@ chapters:
           - "Working toward: [a goal or curiosity]"
       - type: p
         text: "Replace this placeholder text with your own story — then this chapter becomes truly yours."
+      - type: img
+        src: "/sample.svg"
+        alt: "Sample image"
+        caption: "A figure, if you have one to show."
   - title: In the Margins
     content:
       - type: h
@@ -34,6 +38,7 @@ chapters:
           - "Everything else: [whatever else you use]"
       - type: h
         text: How I work
+        new_page: true
       - type: p
         text: "A paragraph about your process, your principles, or the standards you hold your work to."
   - title: Currently Reading

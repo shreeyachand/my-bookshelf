@@ -12,25 +12,44 @@ chapters:
   - title: CAIS++
     content:
       - type: p
-        text: "Short notes and observations — the kind of writing that happens in the margins of everyday life."
+        text: one of my major involvements at USC is the Center for AI in Society Student Branch (CAIS++)
+      - type: h
+        text: projects
+        new_page: true
       - type: list
         items:
-          - "Note one — a line or two about the topic"
-          - "Note two — a line or two about the topic"
-          - "Note three — a line or two about the topic"
-  - title: MongoDB
-    content:
+          - Generating Indexes for Survivor Testimonies (GIST)
+          - ShadeLA
       - type: h
-        text: Longer thoughts
-      - type: p
-        text: "Occasional essays on things I think about a lot. Expect a slow pace, a clear argument, and no fluff."
+        text: roles
+        new_page: true
       - type: list
         items:
-          - "Essay one — title and a short description"
-          - "Essay two — title and a short description"
-  - title: DonorAtlas
+          - Curriculum Lead
+          - Project Lead
+          - VP of Projects
+  - title: Summer 2026
     content:
       - type: h
-        text: On reading
+        text: MongoDB
       - type: p
-        text: "Reviews, favorites, and lessons from books I have read. A record of conversations held across pages."
+        text: i worked on Evergreen, MongoDB's distributed CI system which all software teams at the company use!
+      - type: h
+        text: HackNY
+        new_page: true
+      - type: p
+        text: i had the incredible opportunity to participate in the inaugural cohort of the Public Interest Lab! 
+      - type: p
+        text: i worked with the East Harlem / El Barrio Community Land Trust to build a resident-tracking CRM. 
+      - type: img
+        src: "/DSC07634.jpg"
+        alt: "HackNY demo"
+        caption: demoing at Recurse Center in Brooklyn!
+  - title: Summer 2025
+    content:
+      - type: h
+        text: DonorAtlas
+      - type: p
+        text: i built several full-stack features to help nonprofits fundraise better!
+      - type: p
+        text: during the school year, i also architected and built a political contribution scraping pipeline/system, the best of its kind

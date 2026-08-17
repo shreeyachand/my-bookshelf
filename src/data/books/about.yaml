@@ -14,10 +14,20 @@ chapters:
       - type: p
         text: welcome to my personal website! my name is shreeya chand, and i'm currently studying computer science at usc, with a minor in classical voice. 
       - type: h
-        text: here are some of my current interests
+        text: current (technical) interests
+        new_page: true
       - type: list
         items:
           - open-source
           - MCP servers
           - self-hosting
           - local LLMs
+      - type: h
+        text: always interested in
+        new_page: true
+      - type: list
+        items:
+          - tech for social good
+          - hiking
+          - pickleball
+          - music
