@@ -12,6 +12,17 @@ function bookIdFromPath() {
   return window.location.pathname.split('/').filter(Boolean)[0] || null
 }
 
+function layoutRect(el) {
+  const prevTransform = el.style.transform
+  const prevTransition = el.style.transition
+  el.style.transition = 'none'
+  el.style.transform = 'none'
+  const r = el.getBoundingClientRect()
+  el.style.transform = prevTransform
+  el.style.transition = prevTransition
+  return { left: r.left, top: r.top, width: r.width, height: r.height }
+}
+
 export default function App() {
   const [opening, setOpening] = useState(null)
   const [revealedId, setRevealedId] = useState(null)
@@ -35,7 +46,7 @@ export default function App() {
   const openBook = useCallback((book, element, mode) => {
     if (openingRef.current?.book.id === book.id) return
     const skipAnim = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const next = { book, rect: element.getBoundingClientRect(), skipAnim }
+    const next = { book, rect: layoutRect(element), skipAnim }
     openingRef.current = next
     setOpening(next)
     setRevealedId(null)

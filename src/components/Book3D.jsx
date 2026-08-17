@@ -6,10 +6,11 @@ import '../styles/book3d.css'
 const PAGE_W = 150
 const PAGE_W_MOBILE = 110
 const RISE_MS = 480
-const CLOSE_COVER_MS = 260
+const CLOSE_COVER_MS = 340
 const CLOSE_RETURN_MS = 480
+const CLOSE_REVEAL_LEAD = 150
 const TURN_MS = 580
-const CLOSE_CROSSFADE_MS = 150
+const CLOSE_CROSSFADE_MS = 100
 const PAD_X = 20
 const PAD_TOP = 26
 const PAD_BOTTOM = 22
@@ -198,9 +199,15 @@ export default forwardRef(function Book3D({ book, rect, skipAnim, onClose, onRev
     }
     if (spreadRef.current) spreadRef.current.style.opacity = '0'
     if (backdropRef.current) backdropRef.current.style.opacity = '0'
-    if (coverRef.current) {
-      coverRef.current.style.transform = 'translateZ(var(--book-t))'
+    if (rootRef.current) {
+      rootRef.current.style.transition =
+        'transform 0.48s cubic-bezier(0.3, 0.7, 0.3, 1), opacity 0.12s ease, perspective 0.48s cubic-bezier(0.3, 0.7, 0.3, 1)'
     }
+    if (coverRef.current) {
+      coverRef.current.style.transition =
+        'transform 0.3s cubic-bezier(0.4, 0.1, 0.2, 1)'
+    }
+    setCoverOpen(false)
     window.setTimeout(() => {
       if (rigRef.current) rigRef.current.style.transform = 'rotateY(90deg)'
       if (rootRef.current) {
@@ -211,7 +218,7 @@ export default forwardRef(function Book3D({ book, rect, skipAnim, onClose, onRev
     window.setTimeout(() => {
       onRevealRef.current?.(book.id)
       if (rootRef.current) rootRef.current.style.opacity = '0'
-    }, CLOSE_COVER_MS + CLOSE_RETURN_MS)
+    }, CLOSE_COVER_MS + CLOSE_RETURN_MS - CLOSE_REVEAL_LEAD)
     window.setTimeout(
       () => onCloseRef.current(),
       CLOSE_COVER_MS + CLOSE_RETURN_MS + CLOSE_CROSSFADE_MS,
@@ -387,8 +394,8 @@ export default forwardRef(function Book3D({ book, rect, skipAnim, onClose, onRev
             onClick={handleCoverClick}
             style={{
               transform: coverOpen
-                ? 'rotateY(-178deg)'
-                : 'translateZ(var(--book-t))',
+                ? 'translateZ(calc(var(--book-t) / 2)) rotateY(-178deg)'
+                : 'translateZ(calc(var(--book-t) / 2))',
             }}
           >
             <div className="book3d__coverFrame" aria-hidden="true" />
