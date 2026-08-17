@@ -1,6 +1,6 @@
 import { FONTS } from '../data/fonts.js'
 
-export default function Book({ book, onOpen, hidden }) {
+export default function Book({ book, onOpen, hidden, registerEl }) {
   const {
     title,
     accent,
@@ -26,6 +26,7 @@ export default function Book({ book, onOpen, hidden }) {
       type="button"
       className={`book book--${spine}${hidden ? ' book--hidden' : ''}`}
       style={style}
+      ref={(el) => registerEl?.(book.id, el)}
       onClick={(event) => onOpen(book, event.currentTarget)}
       aria-label={`Open the ${title} book`}
     >

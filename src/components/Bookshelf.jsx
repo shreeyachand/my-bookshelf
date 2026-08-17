@@ -1,7 +1,7 @@
 import Book from './Book.jsx'
 import '../styles/bookshelf.css'
 
-export default function Bookshelf({ books, onOpen, hiddenId }) {
+export default function Bookshelf({ books, onOpen, hiddenId, registerEl }) {
   return (
     <div className="bookshelf">
       <div className="bookshelf__books">
@@ -11,6 +11,7 @@ export default function Bookshelf({ books, onOpen, hiddenId }) {
             book={book}
             hidden={hiddenId === book.id}
             onOpen={onOpen}
+            registerEl={registerEl}
           />
         ))}
       </div>

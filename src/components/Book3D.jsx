@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
+import { forwardRef, useEffect, useImperativeHandle, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { FONTS } from '../data/fonts.js'
 import '../styles/book3d.css'
 
@@ -83,7 +83,7 @@ function packBlocks(flat, heights, maxH) {
   return pages
 }
 
-export default function Book3D({ book, rect, skipAnim, onClose, onReveal }) {
+export default forwardRef(function Book3D({ book, rect, skipAnim, onClose, onReveal }, ref) {
   const [pageIdx, setPageIdx] = useState(0)
   const [coverOpen, setCoverOpen] = useState(false)
   const [turn, setTurn] = useState(null)
@@ -216,6 +216,8 @@ export default function Book3D({ book, rect, skipAnim, onClose, onReveal }) {
       CLOSE_COVER_MS + CLOSE_RETURN_MS + CLOSE_CROSSFADE_MS,
     )
   }
+
+  useImperativeHandle(ref, () => ({ close: requestClose }))
 
   const handleForward = () => {
     if (turn || !coverOpen || pageIdx >= pageData.length - 1) return
@@ -414,4 +416,4 @@ export default function Book3D({ book, rect, skipAnim, onClose, onReveal }) {
       </div>
     </>
   )
-}
+})
