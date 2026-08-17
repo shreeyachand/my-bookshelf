@@ -1,0 +1,210 @@
+.bookshelf {
+  position: relative;
+  width: min(900px, 100%);
+  padding-bottom: 28px;
+}
+
+.bookshelf__books {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 5px;
+  padding: 0 16px;
+  min-height: 300px;
+}
+
+.bookshelf__plank {
+  position: relative;
+  height: 16px;
+  margin: 0 10px;
+  border-radius: 9px;
+  background: linear-gradient(180deg, #8a6240, #6d4a2c);
+  border: 2.5px solid var(--ink);
+  box-shadow: 0 8px 0 -4px rgba(43, 38, 32, 0.28);
+}
+
+.bookshelf__plank::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 8px;
+  right: 8px;
+  height: 4px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.book {
+  --title-color: var(--paper-light);
+  --title-font: var(--serif);
+  position: relative;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2.5px solid var(--ink);
+  border-radius: 3px 6px 6px 3px;
+  padding: 0;
+  background: var(--accent);
+  color: var(--title-color);
+  cursor: pointer;
+  transform: rotate(var(--tilt, 0deg));
+  box-shadow: 0 7px 0 -4px rgba(43, 38, 32, 0.3);
+  overflow: hidden;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    opacity 0.15s ease;
+  outline-offset: 3px;
+}
+
+.book:hover,
+.book:focus-visible {
+  transform: translateY(-5px) rotate(var(--tilt, 0deg)) scale(1.04);
+  box-shadow: 0 13px 0 -6px rgba(43, 38, 32, 0.22);
+}
+
+.book:focus-visible {
+  outline: 3px solid var(--gold);
+}
+
+.book--hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.book__title {
+  position: relative;
+  z-index: 2;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--title-font);
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: 0.06em;
+  color: var(--title-color);
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.18);
+  white-space: nowrap;
+}
+
+.book__title--script {
+  font-size: 21px;
+}
+
+.book__title--display {
+  font-size: 19px;
+}
+
+.book__tag {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
+  font-family: var(--sans);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  color: var(--title-color);
+  opacity: 0.85;
+  white-space: nowrap;
+}
+
+.book--foil::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  top: 10px;
+  bottom: 10px;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, var(--foil, #e6c64d) 0 4px, transparent 4px),
+    linear-gradient(0deg, var(--foil, #e6c64d) 0 4px, transparent 4px);
+}
+
+.book--rib::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  right: 5px;
+  top: 14px;
+  bottom: 14px;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, var(--rib, #f2e9dc) 0 6px, transparent 6px),
+    linear-gradient(0deg, var(--rib, #f2e9dc) 0 6px, transparent 6px);
+}
+
+.book--ruled::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  right: 5px;
+  top: 22px;
+  bottom: 22px;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    180deg,
+    rgba(43, 38, 32, 0.3) 0 1px,
+    transparent 1px 13px
+  );
+}
+
+.book--label::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 72%;
+  height: 48%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  background: color-mix(in srgb, var(--accent) 70%, #1a120b);
+  border: 2px solid var(--title-color);
+  border-radius: 5px;
+}
+
+.book--stripe::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 34%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  background: color-mix(in srgb, var(--accent) 58%, #150a12);
+  border-top: 2px solid var(--title-color);
+  border-bottom: 2px solid var(--title-color);
+}
+
+.book--caps::before,
+.book--caps::after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  height: 13%;
+  pointer-events: none;
+  background: color-mix(in srgb, var(--accent) 72%, #f5ead6);
+}
+
+.book--caps::before {
+  top: 6px;
+  border-bottom: 2px solid var(--ink);
+}
+
+.book--caps::after {
+  bottom: 6px;
+  border-top: 2px solid var(--ink);
+}
+
+@media (max-width: 720px) {
+  .bookshelf__books {
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 0 10px;
+  }
+}

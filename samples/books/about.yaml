@@ -1,0 +1,53 @@
+order: 1
+id: about
+title: About
+accent: "#7d3345"
+ink: "#f0e3d0"
+font: serif
+tag: INTRO
+height: 268
+thickness: 26
+tilt: -1.1
+spine: foil
+chapters:
+  - id: reader
+    title: An Introduction
+    content:
+      - type: p
+        text: "Welcome. This is the book about me — a short biography written the way I like books best: honest, unhurried, and a little old-fashioned."
+      - type: p
+        text: "I am a [your role] based in [your city]. I spend my days building things, writing things, and reading anything that makes me think differently."
+      - type: list
+        items:
+          - "Currently: [what you do now]"
+          - "Previously: [a past role or phase]"
+          - "Working toward: [a goal or curiosity]"
+      - type: p
+        text: "Replace this placeholder text with your own story — then this chapter becomes truly yours."
+  - id: craft
+    title: In the Margins
+    content:
+      - type: h
+        text: Tools of the trade
+      - type: list
+        items:
+          - "Languages: [your languages]"
+          - "Frameworks: [your frameworks]"
+          - "Design: [your design tools]"
+          - "Everything else: [whatever else you use]"
+      - type: h
+        text: How I work
+      - type: p
+        text: "A paragraph about your process, your principles, or the standards you hold your work to."
+  - id: now
+    title: Currently Reading
+    content:
+      - type: h
+        text: What I am reading
+      - type: list
+        items:
+          - "A book, an essay, or a paper that has your attention"
+          - "A topic you are learning about"
+          - "A habit or experiment you are trying"
+      - type: p
+        text: "This chapter is meant to stay current — update it often to show what you are curious about right now."
