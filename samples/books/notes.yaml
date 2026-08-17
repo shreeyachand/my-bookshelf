@@ -4,14 +4,12 @@ title: Notes
 accent: "#96422e"
 ink: "#f2e6d4"
 font: sans
-tag: SKETCHES
 height: 262
 thickness: 34
 tilt: 1.3
 spine: caps
 chapters:
-  - id: sketchbook
-    title: Sketchbook
+  - title: Sketchbook
     content:
       - type: p
         text: "Half-finished drawings, diagrams, and little experiments. Unpolished on purpose."
@@ -20,8 +18,7 @@ chapters:
           - "A sketch or diagram you are fond of"
           - "A small coding experiment"
           - "A layout or interface idea"
-  - id: thoughts
-    title: Fleeting Thoughts
+  - title: Fleeting Thoughts
     content:
       - type: h
         text: Caught on the fly
@@ -32,8 +29,7 @@ chapters:
           - "A half-formed idea you like"
           - "A question you keep asking"
           - "A belief you are changing your mind about"
-  - id: margins
-    title: From the Margins
+  - title: From the Margins
     content:
       - type: h
         text: Notes on books

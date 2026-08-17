@@ -4,14 +4,12 @@ title: About
 accent: "#7d3345"
 ink: "#f0e3d0"
 font: serif
-tag: INTRO
 height: 268
 thickness: 26
 tilt: -1.1
 spine: foil
 chapters:
-  - id: reader
-    title: An Introduction
+  - title: An Introduction
     content:
       - type: p
         text: "Welcome. This is the book about me — a short biography written the way I like books best: honest, unhurried, and a little old-fashioned."
@@ -24,8 +22,7 @@ chapters:
           - "Working toward: [a goal or curiosity]"
       - type: p
         text: "Replace this placeholder text with your own story — then this chapter becomes truly yours."
-  - id: craft
-    title: In the Margins
+  - title: In the Margins
     content:
       - type: h
         text: Tools of the trade
@@ -39,8 +36,7 @@ chapters:
         text: How I work
       - type: p
         text: "A paragraph about your process, your principles, or the standards you hold your work to."
-  - id: now
-    title: Currently Reading
+  - title: Currently Reading
     content:
       - type: h
         text: What I am reading

@@ -4,22 +4,19 @@ title: Contact
 accent: "#3d4a63"
 ink: "#ece4d3"
 font: display
-tag: LETTERS
 height: 260
 thickness: 30
 tilt: 1.1
 spine: rib
 chapters:
-  - id: correspondence
-    title: Correspondence
+  - title: Correspondence
     content:
       - type: p
         text: "The oldest and best way to reach me: a letter (of the digital kind). I read everything and reply when I can."
       - type: link
         text: Write to me
         href: "mailto:you@example.com"
-  - id: elsewhere
-    title: Elsewhere
+  - title: Elsewhere
     content:
       - type: h
         text: Find me online
@@ -30,8 +27,7 @@ chapters:
           - "Twitter / Mastodon — small thoughts"
       - type: p
         text: "Add real links to each of these in data/books.js."
-  - id: imprint
-    title: Imprint
+  - title: Imprint
     content:
       - type: h
         text: About this shelf
