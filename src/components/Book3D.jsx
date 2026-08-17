@@ -4,7 +4,7 @@ import { site } from '../data/site.js'
 import '../styles/book3d.css'
 
 const PAGE_W = 150
-const PAGE_W_MOBILE = 110
+const SINGLE_BP = 640
 const RISE_MS = 480
 const CLOSE_COVER_MS = 340
 const CLOSE_RETURN_MS = 480
@@ -115,8 +115,9 @@ export default forwardRef(function Book3D({ book, rect, skipAnim, onClose, onRev
   onRevealRef.current = onReveal
 
   const { accent, ink, font, spine = 'solid' } = book
-  const pageW = window.innerWidth < 640 ? PAGE_W_MOBILE : PAGE_W
-  const coverW = pageW * 2
+  const single = window.innerWidth < SINGLE_BP
+  const pageW = single ? Math.min(220, window.innerWidth * 0.85) : PAGE_W
+  const coverW = single ? pageW : pageW * 2
   const scale = Math.min(
     (window.innerHeight * 0.58) / book.height,
     (window.innerWidth * 0.78) / coverW,
@@ -307,21 +308,35 @@ export default forwardRef(function Book3D({ book, rect, skipAnim, onClose, onRev
     setCoverOpen(true)
   }
 
-  const showLeft =
-    turn && turn.dir === -1 ? pageData[pageIdx - 2] : pageData[pageIdx - 1]
-  const showRight =
-    turn && turn.dir === 1 ? pageData[pageIdx + 1] : pageData[pageIdx]
-  const turnData = turn
-    ? turn.dir === 1
-      ? pageData[pageIdx]
+  const showLeft = single
+    ? null
+    : turn && turn.dir === -1
+      ? pageData[pageIdx - 2]
       : pageData[pageIdx - 1]
+  const showRight = single
+    ? turn
+      ? turn.dir === 1
+        ? pageData[pageIdx + 1]
+        : pageData[pageIdx]
+      : pageData[pageIdx]
+    : turn && turn.dir === 1
+      ? pageData[pageIdx + 1]
+      : pageData[pageIdx]
+  const turnData = turn
+    ? single
+      ? turn.dir === 1
+        ? pageData[pageIdx]
+        : pageData[pageIdx - 1]
+      : turn.dir === 1
+        ? pageData[pageIdx]
+        : pageData[pageIdx - 1]
     : null
 
   const vars = {
     '--cover-w': `${coverW}px`,
     '--cover-h': `${book.height}px`,
     '--book-t': `${book.thickness}px`,
-    '--page-w': `${pageW}px`,
+    '--page-w': `${coverW / 2}px`,
     '--accent': accent,
     '--title-color': ink,
     '--title-font': FONTS[font] || FONTS.serif,
@@ -356,7 +371,9 @@ export default forwardRef(function Book3D({ book, rect, skipAnim, onClose, onRev
             aria-hidden="true"
           />
           <div
-            className="book3d__face book3d__spread"
+            className={`book3d__face book3d__spread${
+              single ? ' book3d__spread--single' : ''
+            }`}
             ref={spreadRef}
             style={{ opacity: coverOpen ? 1 : 0 }}
             onClick={handleSpreadClick}

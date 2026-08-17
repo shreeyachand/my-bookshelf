@@ -94,6 +94,8 @@
   width: 50%;
   overflow: hidden;
   background: var(--paper-light);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 .book3d__page--left {
@@ -108,6 +110,36 @@
   background:
     linear-gradient(270deg, transparent, rgba(43, 38, 32, 0.12) 100%),
     var(--paper-light);
+}
+
+.book3d__spread--single {
+  overflow: hidden;
+}
+
+.book3d__spread--single .book3d__page--left {
+  display: none;
+}
+
+.book3d__spread--single .book3d__page--right {
+  width: 100%;
+}
+
+.book3d__spread--single .book3d__turn {
+  width: 100%;
+}
+
+.book3d__spread--single .book3d__turn--fwd {
+  left: 0;
+}
+
+.book3d__spread--single .book3d__turn--back {
+  left: 0;
+  transform-origin: left center;
+  transform: rotateY(-178deg);
+}
+
+.book3d__spread--single .book3d__turn--back.book3d__turn--on {
+  transform: rotateY(0deg);
 }
 
 .book3d__page--left::before,
