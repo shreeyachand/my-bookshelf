@@ -191,7 +191,7 @@
 }
 
 .book3d__block--list li::marker {
-  color: var(--gold);
+  color: var(--accent);
 }
 
 .book3d__block--link {
@@ -214,7 +214,7 @@
   font-family: var(--serif);
   font-size: 17px;
   line-height: 1;
-  color: var(--gold);
+  color: var(--accent);
   opacity: 0.75;
   pointer-events: none;
 }

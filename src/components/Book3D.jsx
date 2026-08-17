@@ -44,14 +44,14 @@ function Block({ block }) {
   }
 }
 
-function PageView({ book, data }) {
+function PageView({ data }) {
   if (!data) return <div className="book3d__pageBody book3d__pageBody--blank" />
   const chapterTitle = data.blocks[0]?.chapterTitle || ''
   return (
     <div className="book3d__pageBody">
-      <p className="book3d__kicker">
-        {book.title} · {chapterTitle}
-      </p>
+      {chapterTitle && (
+        <p className="book3d__kicker">{chapterTitle}</p>
+      )}
       <div className="book3d__pageContent">
         {data.blocks.map((item, index) => (
           <div key={index} className="book3d__blockItem">
