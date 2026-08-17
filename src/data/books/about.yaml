@@ -1,0 +1,23 @@
+order: 1
+id: about
+title: About
+accent: "#7d3345"
+ink: "#f0e3d0"
+font: serif
+height: 268
+thickness: 26
+tilt: -1.1
+spine: foil
+chapters:
+  - title: welcome!
+    content:
+      - type: p
+        text: welcome to my personal website! my name is shreeya chand, and i'm currently studying computer science at usc, with a minor in classical voice. 
+      - type: h
+        text: here are some of my current interests
+      - type: list
+        items:
+          - open-source
+          - MCP servers
+          - self-hosting
+          - local LLMs

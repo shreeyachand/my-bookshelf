@@ -1,0 +1,37 @@
+order: 6
+id: notes
+title: Notes
+accent: "#96422e"
+ink: "#f2e6d4"
+font: sans
+height: 262
+thickness: 34
+tilt: 1.3
+spine: caps
+chapters:
+  - title: Sketchbook
+    content:
+      - type: p
+        text: "Half-finished drawings, diagrams, and little experiments. Unpolished on purpose."
+      - type: list
+        items:
+          - "A sketch or diagram you are fond of"
+          - "A small coding experiment"
+          - "A layout or interface idea"
+  - title: Fleeting Thoughts
+    content:
+      - type: h
+        text: Caught on the fly
+      - type: p
+        text: "Ideas that arrive mid-walk, mid-conversation, or mid-coffee — written down before they vanish."
+      - type: list
+        items:
+          - "A half-formed idea you like"
+          - "A question you keep asking"
+          - "A belief you are changing your mind about"
+  - title: From the Margins
+    content:
+      - type: h
+        text: Notes on books
+      - type: p
+        text: "The best conversations happen in the margins. Here is where I keep mine."

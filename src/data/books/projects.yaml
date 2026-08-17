@@ -1,0 +1,45 @@
+order: 2
+id: projects
+title: Projects
+accent: "#2e5d46"
+ink: "#d9b85e"
+font: slab
+height: 286
+thickness: 42
+tilt: 0.9
+spine: label
+chapters:
+  - title: On the Workbench
+    content:
+      - type: h
+        text: Featured work
+      - type: list
+        items:
+          - "Project one — a one-line description of what it does and why it matters."
+          - "Project two — a one-line description of what it does and why it matters."
+          - "Project three — a one-line description of what it does and why it matters."
+      - type: link
+        text: View the full archive on GitHub
+        href: "https://example.com"
+  - title: Experiments
+    content:
+      - type: h
+        text: Small things, quietly made
+      - type: p
+        text: "Side projects, sketches, and half-finished ideas live here. They may not be polished, but they were made with care."
+      - type: list
+        items:
+          - "A tiny tool you built for yourself"
+          - "A weekend prototype that taught you something"
+          - "A writing sample or design exercise"
+  - title: The Archive
+    content:
+      - type: h
+        text: Older work
+      - type: p
+        text: "Everything has a shelf life. Past projects gather here — kept not because they are current, but because they are part of the story."
+      - type: list
+        items:
+          - "An early project you are still proud of"
+          - "A project you learned a hard lesson from"
+          - "A collaboration worth remembering"
